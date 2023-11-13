@@ -46,7 +46,7 @@ def decompose_complex(example):
 
     base_model.eval()
     with torch.no_grad():
-        output = tokenizer.decode(base_model.generate(**model_input, max_new_tokens=50, pad_token_id=2)[0], skip_special_tokens=True)
+        output = tokenizer.decode(base_model.generate(**model_input, max_new_tokens=256, pad_token_id=2)[0], skip_special_tokens=True)
     example["llm_output"] = output.split("#\n")[-1]
     # print(example["llm_output"])
     return example
