@@ -4,7 +4,7 @@ from transformers import AutoTokenizer, BitsAndBytesConfig, AutoModelForCausalLM
 import torch
 
 os.system("huggingface-cli login --token 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")
-dataset = load_dataset("presencesw/complexquestion_2WIKIMQA_100")['train']
+dataset = load_dataset("presencesw/complexquestion_2WIKIMQA_10")['train']
 model_name = "bn22/Mistral-7B-Instruct-v0.1-sharded"
 
 # load_model
@@ -52,4 +52,4 @@ def decompose_complex(example):
     return example
 
 new_dataset = dataset.map(decompose_complex)
-new_dataset.push_to_hub(f"presencesw/complexquestion_2WIKIMQA_100_Mistral", private=False)
+new_dataset.push_to_hub(f"presencesw/complexquestion_2WIKIMQA_10_Mistral", private=False)
