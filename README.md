@@ -1,4 +1,4 @@
-# test_decompose_mistral7b
+# Finetune_decompose_phoGPT
 
 install python package by run `pip install -r requirements.txt`
 
