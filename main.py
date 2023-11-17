@@ -13,7 +13,7 @@ from peft import LoraConfig, PeftModel
 from trl import SFTTrainer # For supervised finetuning
 
 os.system("huggingface-cli login --token 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")
-dataset = load_dataset("presencesw/dataset_luat")
+dataset = load_dataset("presencesw/dataset_luat", use_auth_token=True)
 model_name = "vinai/PhoGPT-7B5-Instruct"
 new_model = "PhoGPT-7B5-Instruct-luat_v1"
 
