@@ -14,8 +14,8 @@ from trl import SFTTrainer # For supervised finetuning
 
 os.system("huggingface-cli login --token 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")
 dataset = load_dataset("presencesw/dataset_luat", use_auth_token=True)
-model_name = "vinai/PhoGPT-7B5-Instruct"
-new_model = "PhoGPT-7B5-Instruct-luat_v1"
+model_name = "vilm/vietcuna-7b-v3"
+new_model = "vietcuna-7b-v3_luat"
 
 # load_model
 lora_r = 64

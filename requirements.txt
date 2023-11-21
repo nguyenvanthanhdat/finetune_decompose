@@ -5,3 +5,5 @@ huggingface-hub
 bitsandbytes
 trl
 peft
+einops
+scipy
