@@ -7,3 +7,4 @@ trl
 peft
 einops
 scipy
+tensorboard
