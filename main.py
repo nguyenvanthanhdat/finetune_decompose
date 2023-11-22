@@ -74,11 +74,19 @@ tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
 tokenizer.pad_token = tokenizer.eos_token
 tokenizer.padding_side = "right"
 
-prompt_template = """Phân tách một câu hỏi phức tạp thành các câu hỏi đơn giản.
-Với mỗi câu hỏi đơn giản được tạo ra sẽ thể hiện cho mỗi vấn đề phụ từ câu hỏi phức tạp vì thế sau khi trả lời chúng ta sẽ dùng sự hiểu biết để trả lời câu hỏi phức tạp.
+# prompt_template = """Phân tách một câu hỏi phức tạp thành các câu hỏi đơn giản.
+# Với mỗi câu hỏi đơn giản được tạo ra sẽ thể hiện cho mỗi vấn đề phụ từ câu hỏi phức tạp vì thế sau khi trả lời chúng ta sẽ dùng sự hiểu biết để trả lời câu hỏi phức tạp.
+# Câu hỏi phức tạp:
+# {complex_question}
+# Câu hỏi đơn giản:"""
+
+prompt_template = """Bạn là một luật sư Việt Nam. Bạn hãy phân tách câu hỏi phức tạp thành các câu hỏi đơn giản Với mỗi câu hỏi đơn giản được tạo ra sẽ thể hiện cho mỗi vấn đề phụ từ câu hỏi phức tạp vì thế sau khi trả lời chúng ta sẽ dùng sự hiểu biết pháp luật để trả lời câu hỏi phức tạp.
+
+### Human:
 Câu hỏi phức tạp:
 {complex_question}
-Câu hỏi đơn giản:"""
+Câu hỏi đơn giản:
+"""
 
 def transform(examples):
     simple_question_lst = [[t["question"] for t in triple] for triple in examples["triplets"]]
