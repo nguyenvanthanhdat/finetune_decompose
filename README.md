@@ -1,4 +1,4 @@
-# Finetune_decompose_phoGPT
+# Finetune_decompose_vietcuna_7B
 
 install python package by run `pip install -r requirements.txt`
 
