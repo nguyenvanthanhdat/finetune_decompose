@@ -138,7 +138,7 @@ training_arguments = TrainingArguments(
     lr_scheduler_type=lr_scheduler_type,
     report_to="tensorboard",
     load_best_model_at_end=True,
-    evaluation_strategy="epochs"
+    evaluation_strategy="steps"
 )
 
 # Set supervised fine-tuning parameters
