@@ -12,6 +12,8 @@ import torch
 from peft import LoraConfig, PeftModel
 from trl import SFTTrainer # For supervised finetuning
 
+os.system("wandb login 138c38699b36fb0223ca0f94cde30c6d531895ca")
+os.environ["WANDB_PROJECT"] = "Loss-Function"
 os.system("huggingface-cli login --token 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")
 # dataset = load_dataset("presencesw/dataset_luat", use_auth_token=True)
 dataset = load_dataset("presencesw/dataset_luat", token=True)
@@ -136,7 +138,8 @@ training_arguments = TrainingArguments(
     warmup_ratio=warmup_ratio,
     group_by_length=group_by_length,
     lr_scheduler_type=lr_scheduler_type,
-    report_to="tensorboard",
+    # report_to="tensorboard",
+    report_to="wandb",
     load_best_model_at_end=True,
     evaluation_strategy="steps"
 )
