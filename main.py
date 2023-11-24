@@ -97,8 +97,6 @@ def transform(examples):
     return examples
 dataset = dataset.map(transform, batched=True)
 
-print(dataset['train'][0]['text'])
-
 # Load LoRA configuration
 peft_config = LoraConfig(
     lora_alpha=lora_alpha,

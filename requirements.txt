@@ -3,6 +3,7 @@ transformers[torch]
 torch
 huggingface-hub
 bitsandbytes
+accelerate
 trl
 peft
 einops
