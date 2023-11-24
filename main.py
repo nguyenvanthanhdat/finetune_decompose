@@ -13,7 +13,8 @@ from peft import LoraConfig, PeftModel
 from trl import SFTTrainer # For supervised finetuning
 
 os.system("huggingface-cli login --token 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")
-dataset = load_dataset("presencesw/dataset_luat", use_auth_token=True)
+# dataset = load_dataset("presencesw/dataset_luat", use_auth_token=True)
+dataset = load_dataset("presencesw/dataset_luat", token=True)
 model_name = "vilm/vietcuna-7b-v3"
 new_model = "vietcuna-7b-v3_luat"
 
@@ -90,11 +91,13 @@ Câu hỏi đơn giản:
 
 def transform(examples):
     simple_question_lst = [[t["question"] for t in triple] for triple in examples["triplets"]]
-    text = ["### Câu hỏi:\n" + prompt_template.format(complex_question=cq)+ "\n\n### Trả lời:\n" + "\n".join(sq)
+    text = [prompt_template.format(complex_question=cq)+ "\n\n### Assistant:\n" + "\n".join(sq)
             for cq, sq in zip(examples["complex_question"], simple_question_lst)]
     examples["text"] = text
     return examples
 dataset = dataset.map(transform, batched=True)
+
+print(dataset['train'][0]['text'])
 
 # Load LoRA configuration
 peft_config = LoraConfig(
@@ -131,7 +134,7 @@ training_arguments = TrainingArguments(
     fp16=fp16,
     bf16=bf16,
     max_grad_norm=max_grad_norm,
-    max_steps=100, # the number of training steps the model will take
+    # max_steps=100, # the number of training steps the model will take
     warmup_ratio=warmup_ratio,
     group_by_length=group_by_length,
     lr_scheduler_type=lr_scheduler_type,
@@ -172,7 +175,7 @@ base_model = AutoModelForCausalLM.from_pretrained(
     low_cpu_mem_usage=True,
     return_dict=True,
     torch_dtype=torch.float16,
-    device_map={"": 0},
+    device_map={"": 0}, 
 )
 merged_model= PeftModel.from_pretrained(base_model, new_model)
 merged_model= merged_model.merge_and_unload()
