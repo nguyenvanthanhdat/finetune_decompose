@@ -13,7 +13,7 @@ from peft import LoraConfig, PeftModel
 from trl import SFTTrainer # For supervised finetuning
 
 os.system("wandb login 138c38699b36fb0223ca0f94cde30c6d531895ca")
-os.environ["WANDB_PROJECT"] = "Loss-Function"
+os.environ["WANDB_PROJECT"] = "Fine-tune luat"
 os.system("huggingface-cli login --token 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")
 # dataset = load_dataset("presencesw/dataset_luat", use_auth_token=True)
 dataset = load_dataset("presencesw/dataset_luat", token=True)
@@ -28,7 +28,8 @@ use_4bit = True
 bnb_4bit_compute_dtype = "float16"
 bnb_4bit_quant_type = "nf4"
 use_nested_quant = False
-output_dir = "./results"
+# output_dir = "./results"
+output_dir = "./results_v1"
 num_train_epochs = 1
 fp16 = False
 bf16 = False
