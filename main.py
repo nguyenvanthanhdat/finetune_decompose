@@ -136,7 +136,8 @@ training_arguments = TrainingArguments(
     warmup_ratio=warmup_ratio,
     group_by_length=group_by_length,
     lr_scheduler_type=lr_scheduler_type,
-    report_to="tensorboard"
+    report_to="tensorboard",
+    load_best_model_at_end=True
 )
 
 # Set supervised fine-tuning parameters
