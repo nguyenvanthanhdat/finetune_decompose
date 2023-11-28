@@ -35,7 +35,7 @@ fp16 = False
 bf16 = False
 per_device_train_batch_size = 8
 per_device_eval_batch_size = 8
-gradient_accumulation_steps = 1
+gradient_accumulation_steps = 4
 gradient_checkpointing = True
 max_grad_norm = 0.3
 learning_rate = 2e-4
@@ -45,8 +45,8 @@ lr_scheduler_type = "constant"
 max_steps = -1
 warmup_ratio = 0.03
 group_by_length = True
-save_steps = 200
-logging_steps = 200
+save_steps = 500
+logging_steps = 100
 max_seq_length = None
 packing = False
 # device_map = {"": 0}
@@ -129,6 +129,7 @@ training_arguments = TrainingArguments(
     do_train=True,
     do_eval=True,
     save_steps=save_steps,
+    eval_steps=save_steps,
     logging_steps=logging_steps,
     learning_rate=learning_rate,
     weight_decay=weight_decay,
@@ -142,7 +143,8 @@ training_arguments = TrainingArguments(
     # report_to="tensorboard",
     report_to="wandb",
     load_best_model_at_end=True,
-    evaluation_strategy="steps"
+    evaluation_strategy="steps",
+    run_name="1_2e-4_4"
 )
 
 # Set supervised fine-tuning parameters
