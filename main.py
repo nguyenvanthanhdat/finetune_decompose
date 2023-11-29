@@ -144,7 +144,7 @@ training_arguments = TrainingArguments(
     report_to="wandb",
     load_best_model_at_end=True,
     evaluation_strategy="steps",
-    run_name="1_2e-4_4"
+    run_name="1_2e-3_4"
 )
 
 # Set supervised fine-tuning parameters
