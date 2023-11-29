@@ -18,7 +18,7 @@ os.system("huggingface-cli login --token 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")
 # dataset = load_dataset("presencesw/dataset_luat", use_auth_token=True)
 dataset = load_dataset("presencesw/dataset_luat", token=True)
 model_name = "vilm/vietcuna-7b-v3"
-new_model = "vietcuna-7b-v3_luat"
+new_model = "vietcuna-7b-v3_luat_v1"
 
 # load_model
 lora_r = 64
