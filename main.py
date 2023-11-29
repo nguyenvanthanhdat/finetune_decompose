@@ -127,9 +127,9 @@ training_arguments = TrainingArguments(
     gradient_accumulation_steps=gradient_accumulation_steps,
     optim=optim,
     do_train=True,
-    do_eval=True,
+    # do_eval=True,
     save_steps=save_steps,
-    eval_steps=save_steps,
+    # eval_steps=save_steps,
     logging_steps=logging_steps,
     learning_rate=learning_rate,
     weight_decay=weight_decay,
@@ -142,8 +142,8 @@ training_arguments = TrainingArguments(
     lr_scheduler_type=lr_scheduler_type,
     # report_to="tensorboard",
     report_to="wandb",
-    load_best_model_at_end=True,
-    evaluation_strategy="steps",
+    # load_best_model_at_end=True,
+    # evaluation_strategy="steps",
     run_name="1_2e-3_4"
 )
 
